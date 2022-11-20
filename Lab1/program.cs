@@ -1,3 +1,4 @@
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace Lab1_14_11
 {
-    class Code
+    class program
     {
         static void bai1()
         {
@@ -195,13 +196,13 @@ namespace Lab1_14_11
             b = int.Parse(Console.ReadLine());
             Console.Write("Nhap nam : ");
             c = int.Parse(Console.ReadLine());
-            if(c > 0)
+            if (c > 0)
             {
-                if(b > 0 && b < 13)
+                if (b > 0 && b < 13)
                 {
-                    if(b == 1 || b == 3 || b == 5 || b == 7 || b == 8 || b == 10 || b == 12)
+                    if (b == 1 || b == 3 || b == 5 || b == 7 || b == 8 || b == 10 || b == 12)
                     {
-                        if(a > 0 && a < 32)
+                        if (a > 0 && a < 32)
                         {
                             Console.WriteLine("{0}/{1}/{2} hop le ", a, b, c);
                         }
@@ -211,9 +212,9 @@ namespace Lab1_14_11
 
                         }
                     }
-                    else if(b == 4 || b == 6 || b == 9 || b == 11 )
+                    else if (b == 4 || b == 6 || b == 9 || b == 11)
                     {
-                        if(a > 0 && a < 31)
+                        if (a > 0 && a < 31)
                         {
                             Console.WriteLine("{0}/{1}/{2} hop le ", a, b, c);
                         }
@@ -233,6 +234,131 @@ namespace Lab1_14_11
                 Console.WriteLine("{0}/{1}/{2} khong hop le ", a, b, c);
             }
         }
+        static void Bai8()
+        {
+            int ngay,thang,nam;
+
+            Console.Write("Nhap ngay : ");
+            ngay = int.Parse(Console.ReadLine());
+            Console.Write("Nhap thang : ");
+            thang = int.Parse(Console.ReadLine());
+            Console.Write("Nhap nam : ");
+            nam = int.Parse(Console.ReadLine());
+            if (ngay >= 1 && ngay <= 31 && thang >= 1 && thang <= 12)
+            {
+                Console.Write("Ngay ke tiep cua{0}/{1}/{2} la{3}/{4}/{5}\n", ngay, thang, nam, ngay + 1, thang, nam);
+                Console.Write("Ngay truoc cua{0}/{1}/{2} la{3}/{4}/{5}", ngay, thang, nam, ngay - 1, thang, nam);
+            }
+            else
+                Console.Write("Vui long nhap ngay hay thang hop le:\n");
+        }
+        static void Bai9()
+        {
+            Console.Write("Nhap vao mot so: ");
+            int number = int.Parse(Console.ReadLine());
+            bool IsPrime = true;
+            if (number < 2)
+            {
+                IsPrime = false;
+            }
+            for (int i = 2; i < number / 2; i++)
+            {
+                if (number % i == 0)
+                {
+                    IsPrime = false;
+                    break;
+                }
+            }
+            if (IsPrime)
+            {
+                Console.Write($"{number} la so nguyen to.");
+            }
+            else
+            {
+                Console.Write($"{number} khong phai so nguyen to.");
+            }
+            Console.ReadKey();
+        }
+        static int USCLN(int x, int y)
+        {
+            if (y == 0) return x;
+            return USCLN(y, x % y);
+        }
+        static int BSCNN(int x, int y)
+        {
+            return (x * y) / USCLN(x, y);
+        }
+        static int CheckPrime(int n)
+        {
+            if (n < 2)
+            {
+                return 0;
+            }
+            for (int i = 2; i < n / 2; i++)
+            {
+                if (n % i == 0)
+                {
+                    return 0;
+                    break;
+                }
+            }
+            return 1;
+        }
+        static void cau12()
+        {
+            Console.WriteLine("Nhap so phan tu mang: ");
+            int n = Convert.ToInt32(Console.ReadLine());
+            int[] a = new int[n];
+            for (int i = 0; i < a.Length; i++)
+            {
+                Console.Write("a[" + i.ToString() + "]=");
+                a[i] = int.Parse(Console.ReadLine());
+            }
+            Console.WriteLine("So phan tu cua mang : {0}", a.Length);
+            for (int i = 0; i < a.Length; i++)
+            {
+                Console.WriteLine("Phan tu thu {0} : {1}", i, a[i]);
+            }
+            int count = 0;
+            for (int i = 0; i < n; i++)
+            {
+                if (a[i] % 2 == 0)
+                {
+                    count++;
+                }
+            }
+            Console.WriteLine("So phan tu chan co trong mang : {0}", count);
+            int max = 0;
+            int min = 0;
+            for (int i = 0; i < n; i++)
+            {
+                max = Math.Max(max, a[i]);
+            }
+            for (int i = 0; i < n; i++)
+            {
+                min = Math.Min(min, a[i]);
+            }
+            Console.WriteLine("Phan tu max trong mang: {0}", max);
+            Console.WriteLine("Phan tu min trong mang: {0}", min);
+            Console.Write("Liet ke cac so nguyen to trong mang: ");
+            for (int i = 0; i < n; i++)
+            {
+                if (CheckPrime(a[i]) == 1)
+                {
+                    Console.Write("{0} ", a[i]);
+                }
+            }
+            Console.WriteLine();
+            int sum = 0;
+            for (int i = 0; i < n; i++)
+            {
+                if (a[i] >= 0)
+                {
+                    sum += a[i];
+                }
+            }
+            Console.WriteLine("Tong cac phan tu duong trong mang : {0}", sum);
+        }
         static void menu()
         {
             Console.Write("Bai 1 : Kiem tra nam co phai nam nhuan\n");
@@ -246,6 +372,7 @@ namespace Lab1_14_11
             Console.Write("Bai 9 : Cho biet phai so nguyen to\n");
             Console.Write("Bai 10 : Tim uoc so chung lon nhat\n");
             Console.Write("Bai 11 : Tim uoc so chung nho nhat\n");
+            Console.Write("Bai 12 : Mang 1 chieu");
         }
         static void Main(String[] args)
         {
@@ -305,7 +432,42 @@ namespace Lab1_14_11
                         }
                     case 8:
                         {
+                            Bai8();
+                            break;
+                        }
+                    case 9:
+                        {
+                            Bai9();
+                            break;
+                        }
+                    case 10:
+                        {
+                            int x, y;
+                            Console.Write("Nhap so nguyen duong a = ");
+                            String valA = Console.ReadLine();
+                            x = Convert.ToInt32(valA);
+                            Console.Write("Nhap so nguyen duong b = ");
+                            String valB = Console.ReadLine();
+                            y = Convert.ToInt32(valB);
 
+                            Console.Write("USCLN cua {0} va {1} la: {2} \n", x, y, USCLN(x, y));
+                            break;
+                        }
+                    case 11:
+                        {
+                            int x, y;
+                            Console.Write("Nhap so nguyen duong a = ");
+                            String valA = Console.ReadLine();
+                            x = Convert.ToInt32(valA);
+                            Console.Write("Nhap so nguyen duong b = ");
+                            String valB = Console.ReadLine();
+                            y = Convert.ToInt32(valB);
+                            Console.Write("BSCNN cua cua {0} va {1} la: {2}", x, y, BSCNN(x, y));
+                            break;
+                        }
+                    case 12:
+                        {
+                            cau12();
                             break;
                         }
                     default:
@@ -315,5 +477,4 @@ namespace Lab1_14_11
             } while (chon != 0);
         }
     }
-
 }

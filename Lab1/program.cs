@@ -236,7 +236,7 @@ namespace Lab1_14_11
         }
         static void Bai8()
         {
-            int ngay,thang,nam;
+            int ngay, thang, nam;
 
             Console.Write("Nhap ngay : ");
             ngay = int.Parse(Console.ReadLine());
@@ -246,8 +246,8 @@ namespace Lab1_14_11
             nam = int.Parse(Console.ReadLine());
             if (ngay >= 1 && ngay <= 31 && thang >= 1 && thang <= 12)
             {
-                Console.Write("Ngay ke tiep cua{0}/{1}/{2} la{3}/{4}/{5}\n", ngay, thang, nam, ngay + 1, thang, nam);
-                Console.Write("Ngay truoc cua{0}/{1}/{2} la{3}/{4}/{5}", ngay, thang, nam, ngay - 1, thang, nam);
+                Console.Write("Ngay ke tiep cua {0}/{1}/{2} la{3}/{4}/{5}\n", ngay, thang, nam, ngay + 1, thang, nam);
+                Console.Write("Ngay truoc cua {0}/{1}/{2} la{3}/{4}/{5}", ngay, thang, nam, ngay - 1, thang, nam);
             }
             else
                 Console.Write("Vui long nhap ngay hay thang hop le:\n");

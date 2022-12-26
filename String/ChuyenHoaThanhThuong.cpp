@@ -25,5 +25,14 @@ int main(void){
     c = upper('l');
     printf("%c\n", c);
 
+char string[100];
+
+printf("Nhap chuoi bat ky: ");
+   gets(string);
+  
+   strlwr(string);
+   printf("Chuoi chu hoa la: %s", string);
+  
+   return (0);
     return 0;
 }
